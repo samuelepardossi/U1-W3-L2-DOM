@@ -111,7 +111,7 @@
 
       const changeUrls = function () {
         const links = document.querySelectorAll("a:not(footer a)");
-        links.forEach((a) => (link.href = "https://www.google.com"));
+        links.forEach((a) => (a.href = "https://www.google.com"));
       };
       changeUrls();
 
@@ -120,10 +120,10 @@
       */
 
       const addToTheSecond = function () {
-        const secondList = document.getElementById("second li");
-        const newElement = document.createElement("li");
-        newElement.appendChild(newElement);
+        const secondList = document.getElementById("second list");
+        const newItem = document.createElement("li");
         secondList.innerText = "4th";
+        newItem.appendChild(newItem);
       };
       addToTheSecond();
 
@@ -162,17 +162,26 @@
         */
 
       const makeItClickable = function () {
-        const clickOnScreen = document.querySelector("h1");
-        clickOnScreen.addEventListener("click", () => {
-          clickOnScreen.innerText = clickOnScreen.innerText.slice(0, -1);
-        });
+        const characters = Array.from(document.querySelector("h1").innerText);
+        const pageTitle = document.querySelector("h1");
+        pageTitle.onclick = () => {
+          characters.pop();
+          pageTitle.innerText = characters.join("");
+        };
       };
-      makeItClickable();
       /* ESERCIZIO 10
          Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
         */
 
-      const revealFooterLink = function () {};
+      {
+        const revealFooterLink = function () {
+          const footerLink = document.querySelector("footer a");
+          const footer = document.querySelector("footer");
+          footer.onclick = () => {
+            alert(footerLink.href);
+          };
+        };
+      }
 
       /* ESERCIZIO 11
          Crea una funzione che crei una tabella nell'elemento con id "tableArea".
